@@ -38,8 +38,40 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
-}
+ 
+    let arr =[] ;
+    expr = expr.match(/.{1,10}/g);
+   
+    let stringToNumbersMorse =(props) =>{
+      let result ="";
+  
+        props =props.match(/.{1,2}/g);
+        
+        props.forEach(element => {
+          if(element==="10"){
+            result+=".";
+          }
+          if(element==="11"){
+            result+="-";
+          }
+        });
+       
+        return result;
+      }
+    
+    
+     expr.forEach(element => {
+         if(element === "**********"){arr.push(" ")}else{
+           //console.log(stringToNumbersMorse(element));
+         arr.push(MORSE_TABLE[stringToNumbersMorse(element)]);
+         console.log(MORSE_TABLE[stringToNumbersMorse(element)]);
+     }
+     });
+     
+    return arr.join("");
+    
+  
+  }
 
 module.exports = {
     decode
